@@ -31,3 +31,6 @@ jobs:
 
       - name: Create Docker image and push to GCP
         run: gcloud builds submit --tag us-central1-docker.pkg.dev/centered-snow-427015-a9/notely-ar-repo/notely:latest .
+
+      - name: Deploy to Cloud Run
+        run: gcloud run deploy notely --image us-central1-docker.pkg.dev/centered-snow-427015-a9/notely-ar-repo/notely@sha256:c6417f3d464e3d41fd972b25c852784c45342bab8fb4b98d2ced26e5cca5d4d2 --region us-central1 --allow-unauthenticated --project centered-snow-427015-a9 --max-instances=4
